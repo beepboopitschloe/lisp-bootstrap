@@ -1,7 +1,8 @@
 (ql:quickload '(drakma
                 cl-json))
 
-(defpackage :com.nmuth.rest-client (:use :cl :drakma :cl-json))
+(defpackage :com.nmuth.rest-client
+	(:use :cl :drakma :cl-json))
 
 (defparameter *test-headers* nil)
 (defparameter *test-body* nil)
@@ -41,4 +42,18 @@
 
 (defun rest/post (url post-body)
   (let ((post-body-json (json:encode-json post-body)))
-    (rest/request url (list :contents post-body-json))))
+    (rest/request url (list
+											 :method :post
+											 :content post-body-json))))
+
+(defun rest/put (url put-body)
+  (let ((put-body-json (json:encode-json put-body)))
+    (rest/request url (list
+											 :method :put
+											 :content put-body-json))))
+
+(defun rest/delete (url delete-body)
+  (let ((delete-body-json (json:encode-json delete-body)))
+    (rest/request url (list
+											 :method :delete
+											 :content delete-body-json))))
