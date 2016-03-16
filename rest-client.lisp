@@ -6,9 +6,6 @@
 	(:nicknames :rest)
 	(:export :get-json :post-json :put-json :delete-json))
 
-(defparameter *test-headers* nil)
-(defparameter *test-body* nil)
-
 (defclass response ()
 	((body :initarg :body :accessor body)
 	 (status :initarg :status :accessor status)
