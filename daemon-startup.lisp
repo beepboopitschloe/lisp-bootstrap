@@ -1,6 +1,6 @@
 (load "bootstrap")
 
-(ql:quickload 'slime)
+(ql:quickload 'swank)
 
 (defvar *swank-port* 4005)
 

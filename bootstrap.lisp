@@ -17,10 +17,9 @@
 
 (if (not (quicklisp-installed))
 		(progn
-			(load "vendor/quicklisp")
-			;; using #'string->function here so that the compiler doesn't complain about
-			;; the package not existing.
-			(funcall (string->function "quicklisp-quickstart:install"))))
+      (if (find-package :quicklisp-quickstart)
+          (quicklisp-quickstart:install)
+          (error "package quicklisp-quickstart not available"))))
 
 (if (and (quicklisp-installed) (not (find-package :ql)))
 		;; quicklisp is installed but not loaded, need to load it
